@@ -1,5 +1,5 @@
-from xmlrpc.client import Boolean
-
+# HashSet implementation with a bitmap
+# Can host integer values [1, 10**6]
 
 class VHashSet:
     def __init__(self):
