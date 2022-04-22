@@ -1,20 +1,24 @@
-class MyHashSet:
+from xmlrpc.client import Boolean
 
+
+class VHashSet:
     def __init__(self):
-        self.bitarray = 1<<(10**6) 
+        self.hs = 1 << (10**6+1)
 
-    def add(self, key: int) -> None:
-        self.bitarray = self.bitarray | (1<<key)
-
-    def remove(self, key: int) -> None:
-        self.bitarray = self.bitarray & ~(1<<key)
+    def insert(self, key: int) -> 'VHashSet':
+        self.hs |= 1 << key
+        return self
+    
+    def delete(self, key: int) -> 'VHashSet':
+        self.hs &= ~(1<<key)
+        return self
 
     def contains(self, key: int) -> bool:
-        return self.bitarray & (1<<key)
+        return bool(self.hs & (1<<key))
 
-
-# Your MyHashSet object will be instantiated and called as such:
-# obj = MyHashSet()
-# obj.add(key)
-# obj.remove(key)
-# param_3 = obj.contains(key)
+vhs = VHashSet()
+vhs.insert(1).insert(2).insert(10**6)
+print(vhs.contains(1))
+print(vhs.contains(10**6))
+vhs.delete(1)
+print(vhs.contains(1))
