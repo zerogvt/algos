@@ -50,5 +50,4 @@ class Solution:
         swapped = self.findTwoSwapped(nums)
         print(swapped)
         self.inOrderAndSwap(root, swapped)
-        print(self.findTwoSwapped([1, 2, 3, 10, 7, 8, 4]))
         
